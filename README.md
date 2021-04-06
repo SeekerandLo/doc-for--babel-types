@@ -135,3 +135,89 @@ ArrayPattern Node {
 // 断言使用
 types.assertArrayPattern(node)
 ```
+
+## 字面量相关
+1. **stringLiteral**
+```js
+// 创建string字面量
+types.stringLiteral(value: string);
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.stringLiteral('test'))]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = "test";
+```
+
+2. **bigIntLiteral**
+```js
+// 创建bigInt字面量：bigInt比number类型支持更大范围的整数值
+types.bigIntLiteral(value: string);
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.stringLiteral('123'))]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = 123n;
+```
+
+3. **booleanLiteral**
+```js
+// 创建boolean字面量
+types.booleanLiteral(value: boolean);
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.booleanLiteral(true))]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = true;
+```
+
+4. **nullLiteral**
+```js
+// 创建null字面量
+types.nullLiteral();
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.nullLiteral())]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = null;
+```
+
+5. **numberLiteral**
+```js
+// 创建number字面量
+types.numberLiteral(value: number);
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.numberLiteral(123))]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = 123;
+```
+
+6. **regExpLiteral**
+```
+// 创建regExp字面量
+types.regExpLiteral(pattern: string, flags?: string);
+// flags: g(全局模式)、i(忽略大小写)、m(多行模式)
+
+// use babel
+const ast = types.variableDeclaration('var', [types.variableDeclarator(types.identifier('a'), types.regExpLiteral('[0-9]'))]);
+const code = generage(ast);
+console.log(code);
+
+// console
+var a = /[0-9]/;
+```
